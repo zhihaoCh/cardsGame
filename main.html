@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            position: relative;
+            width: 100%;
+            height: 800px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("./img/bgimg.jpg");
+        }
+        #setting{
+            position: fixed;
+            left: 80%;
+            top: 10%;
+            width: 100px;
+        }
+        #music{
+            position: fixed;
+            left: 90%;
+            top: 10%;
+            width: 100px;
+        }
+        #resort{
+            position: fixed;
+            left: 80%;
+            top: 30%;
+            width: 100px;
+        }
+        #score{
+            position: fixed;
+            width: 300px;
+            height: 200px;
+            border: 5px solid red;
+            left: 78%;
+            top: 55%;
+        }
+        #wrapper{
+            width: 1200px;
+            height: 800px;
+            margin-top: 50px;
+            margin-left: 150px;
+            border: 10px solid orange;
+            position: relative;
+        }
+        .outer{
+            width: 180px;
+            height: 200px;
+            background-image: url("./img/outer.png");
+            background-size: 100% 100%;
+            position: absolute;
+            border-radius: 30px;
+        }
+        .inner{
+            width: 180px;
+            height: 200px;
+            position: absolute;
+            z-index: -1;
+            /*background-color: red;*/
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+        }
+        #score{
+            font-size: 50px;
+            font-weight: bold;
+            text-align: center;
+        }
+        #card1{
+            width: 180px;
+            height: 200px;
+            position: fixed;
+            top: 100px;
+            left: 200px;
+
+        }
+        #card2{
+            width: 180px;
+            height: 200px;
+            position: fixed;
+            top: 100px;
+            left: 430px;
+
+        }
+        #card3{
+            width: 180px;
+            height: 200px;
+            position: fixed;
+            top: 100px;
+            left: 660px;
+
+        }
+        #card4{
+            width: 180px;
+            height: 200px;
+            position: fixed;
+            top: 100px;
+            left: 890px;
+
+        }
+        #card5{
+            width: 180px;
+            height: 200px;
+            position: fixed;
+            top: 100px;
+            left: 1140px;
+
+        }
+        #card6{
+            width: 180px;
+            height: 200px;
+            position: fixed;
+            top: 350px;
+            left: 200px;
+
+        }
+        #card7{
+            width: 180px;
+            height: 200px;
+            position: fixed;
+            top: 350px;
+            left: 430px;
+
+        }
+        #card8{
+            width: 180px;
+            height: 200px;
+            position: fixed;
+            top: 350px;
+            left: 660px;
+
+        }
+        #card9{
+            width: 180px;
+            height: 200px;
+            position: fixed;
+            top: 350px;
+            left: 890px;
+
+        }
+        #card10{
+            width: 180px;
+            height: 200px;
+            position: fixed;
+            top: 350px;
+            left: 1140px;
+
+        }
+        #card11{
+            width: 180px;
+            height: 200px;
+            position: fixed;
+            top: 600px;
+            left: 200px;
+
+        }
+        #card12{
+            width: 180px;
+            height: 200px;
+            position: fixed;
+            top: 600px;
+            left: 430px;
+
+        }
+        #card13{
+            width: 180px;
+            height: 200px;
+            position: fixed;
+            top: 600px;
+            left: 660px;
+
+        }
+        #card14{
+            width: 180px;
+            height: 200px;
+            position: fixed;
+            top: 600px;
+            left: 890px;
+
+        }
+        #card15{
+            width: 180px;
+            height: 200px;
+            position: fixed;
+            top: 600px;
+            left: 1140px;
+
+        }
+        @keyframes myOuter {
+            0%{
+                transform: rotateY(0);
+            }
+            50%{
+                transform: rotateY(90deg);
+            }
+            100%{
+                transform: rotateY(90deg);
+            }
+        }
+        @keyframes myInner {
+            0%{
+                transform: rotateY(180deg);
+            }
+            50%{
+                transform: rotateY(270deg);
+            }
+            100%{
+                transform: rotateY(360deg);
+            }
+        }
+        @keyframes myOuter1 {
+            0%{
+                transform: rotateY(90deg);
+            }
+            50%{
+                transform: rotateY(90deg);
+            }
+            100%{
+                transform: rotateY(0);
+            }
+        }
+        @keyframes myInner1 {
+            0%{
+                transform: rotateY(360deg);
+            }
+            50%{
+                transform: rotateY(270deg);
+            }
+            100%{
+                transform: rotateY(180deg);
+            }
+        }
+        @keyframes check {
+            50%{
+                width: 10%;
+                height: 10%;
+                transform: rotateZ(720deg);
+                opacity: 0.5;
+            }
+            100%{
+                transform: rotateZ(720deg);
+                width: 0;
+                height: 0;
+            }
+        }
+        /*洗牌动画*/
+        @keyframes resort{
+            0%{
+                transform: rotateY(0);
+                opacity: 0;
+            }
+            25%{
+                transform: rotateY(180deg);
+                opacity: 0.5;
+            }
+            50%{
+                transform: rotateY(360deg);
+                opacity: 0.8;
+            }
+            75%{
+                top: 350px;
+                left: 660px;
+                transform: rotateY(360deg);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body onload="place()">
+<script>
+    function  place() {
+        for (var i = cards.length-1;i >= 0;i--){
+            cards[i].style.animation =  'resort 2s 1 ease-in-out backwards';
+        }
+    }
+</script>
+<img src="./img/setting.png" alt="" id="setting">
+<img src="./img/music.png" alt="" id="music">
+<img src="./img/resort.png" alt="" id="resort" onclick="resort()">
+<div id="score">得分：0</div>
+<div id="wrapper">
+    <div id="card1" class="card">
+        <div class="outer"></div>
+        <div class="inner"><img src="./img/content1.png" alt=""></div>
+    </div>
+    <div id="card2" class="card">
+        <div class="outer"></div>
+        <div class="inner"><img src="./img/content1.png" alt=""></div>
+    </div>
+    <div id="card3" class="card">
+        <div class="outer"></div>
+        <div class="inner"><img src="./img/content2.png" alt=""></div>
+    </div>
+    <div id="card4" class="card">
+        <div class="outer"></div>
+        <div class="inner"><img src="./img/content2.png" alt=""></div>
+    </div>
+    <div id="card5" class="card">
+        <div class="outer"></div>
+        <div class="inner"><img src="./img/content3.png" alt=""></div>
+    </div>
+    <div id="card6" class="card">
+        <div class="outer"></div>
+        <div class="inner"><img src="./img/content3.png" alt=""></div>
+    </div>
+    <div id="card7" class="card">
+        <div class="outer"></div>
+        <div class="inner"><img src="./img/content4.png" alt=""></div>
+    </div>
+    <div id="card8" class="card">
+        <div class="outer"></div>
+        <div class="inner"><img src="./img/joker1.png" alt="" id="joker"></div>
+    </div>
+    <div id="card9" class="card">
+        <div class="outer"></div>
+        <div class="inner"><img src="./img/content4.png" alt=""></div>
+    </div>
+    <div id="card10" class="card">
+        <div class="outer"></div>
+        <div class="inner"><img src="./img/content5.png" alt=""></div>
+    </div>
+    <div id="card11" class="card">
+        <div class="outer"></div>
+        <div class="inner"><img src="./img/content5.png" alt=""></div>
+    </div>
+    <div id="card12" class="card">
+        <div class="outer"></div>
+        <div class="inner"><img src="./img/content6.png" alt=""></div>
+    </div>
+    <div id="card13" class="card">
+        <div class="outer"></div>
+        <div class="inner"><img src="./img/content6.png" alt=""></div>
+    </div>
+    <div id="card14" class="card">
+        <div class="outer"></div>
+        <div class="inner"><img src="./img/content7.png" alt=""></div>
+    </div>
+    <div id="card15" class="card">
+        <div class="outer"></div>
+        <div class="inner"><img src="./img/content7.png" alt=""></div>
+    </div>
+</div>
+<script>
+    var wrapper = document.getElementById('wrapper');
+    var cards = document.getElementsByClassName('card');
+    var outer = document.getElementsByClassName('outer');
+    var inner = document.getElementsByClassName('inner');
+    var score = 0;
+    var game = 0;
+    choose();
+    var temp = 0;
+    var tempArr = [];
+    var tempInner = [];
+    var flag = true;
+    function choose() {
+        for (var i = cards.length-1;i >= 0;i--){
+            outer[i].onclick = (function (a) {
+                return function(){
+                    console.log(flag);
+                    if (flag == true){
+                        if (cards[a] != tempArr[0]){
+                            tempArr.push(cards[a]);
+                            console.log(tempArr);
+                            console.log(temp);
+                            tempInner.unshift(cards[a].getElementsByClassName('inner')[0].innerHTML);
+                            outer[a].style.animation =  'myOuter 1s ease both';
+                            inner[a].style.animation =  'myInner 1s ease both';
+                            temp++;
+                        }
+                    }
+                    if (temp == 2) {
+                        flag = false;
+                        if (tempInner[1]==tempInner[0]&&tempArr[0]!=tempArr[1]) {
+                            ++temp;
+                            var l = tempArr.length;
+                            var t1 = tempArr[l-2];
+                            var t2 = tempArr[l-1];
+                            var t3 = tempArr[l-2].getElementsByClassName('outer')[0];
+                            var t4 = tempArr[l-1].getElementsByClassName('outer')[0];
+                            var t5 = tempArr[l-2].getElementsByClassName('inner')[0];
+                            var t6 = tempArr[l-1].getElementsByClassName('inner')[0];
+                            var img1 = tempArr[l-2].getElementsByClassName('inner')[0].firstChild;
+                            var img2 = tempArr[l-1].getElementsByClassName('inner')[0].firstChild;
+                            setTimeout(function () {
+                                if (img1&&img2){
+                                    t1.style.animation =  'check 0.5s ease forwards';
+                                    t2.style.animation =  'check 0.5s ease forwards';
+                                    t3.style.animation =  'check 0.5s ease forwards';
+                                    t4.style.animation =  'check 0.5s ease forwards';
+                                    t5.style.animation =  'check 0.5s ease forwards';
+                                    t6.style.animation =  'check 0.5s ease forwards';
+                                    t5.removeChild(img1);
+                                    t6.removeChild(img2);
+                                    t1.display = 'none';
+                                    t2.display = 'none';
+                                    t3.display = 'none';
+                                    t4.display = 'none';
+                                    t5.display = 'none';
+                                    t6.display = 'none';
+                                }
+                                score += 10;
+                                game++;
+                                temp = 0;
+                                tempArr = [];
+                                tempInner = [];
+                                document.getElementById('score').innerHTML = "得分："+score;
+                                if (game == 7){
+                                    alert("恭喜过关！");
+                                    location.href='index.html';
+                                }
+                                flag = true;
+                            },1000);
+                        }
+                        if (tempInner[0]!=tempInner[1]&&tempArr[0]!=tempArr[1]){
+                            ++temp;
+                            setTimeout(function () {
+                                tempArr[0].getElementsByClassName('outer')[0].style.animation =  'myOuter1 1s ease both';
+                                tempArr[0].getElementsByClassName('inner')[0].style.animation =  'myInner1 1s ease both';
+                                tempArr[1].getElementsByClassName('outer')[0].style.animation =  'myOuter1 1s ease both';
+                                tempArr[1].getElementsByClassName('inner')[0].style.animation =  'myInner1 1s ease both';
+                                setTimeout(function () {
+                                    var img1 = tempArr[0].getElementsByClassName('inner')[0].firstChild;
+                                    var img2 = tempArr[1].getElementsByClassName('inner')[0].firstChild;
+                                    tempArr[0].getElementsByClassName('outer')[0].style.animation =  '';
+                                    tempArr[0].getElementsByClassName('inner')[0].style.animation =  '';
+                                    tempArr[1].getElementsByClassName('outer')[0].style.animation =  '';
+                                    tempArr[1].getElementsByClassName('inner')[0].style.animation =  '';
+                                    var str1 = img1.src;
+                                    var s1 = str1.slice(str1.lastIndexOf('/')+1);
+                                    var str2 = img2.src;
+                                    var s2 = str2.slice(str2.lastIndexOf('/')+1);
+                                    if (s1 == 'joker1.png'||s2 == 'joker1.png'){
+                                        temp = 0;
+                                        tempArr = [];
+                                        tempInner = [];
+                                        score += 1;
+                                        resort();
+                                    }
+                                },1001);
+                                setTimeout(function () {
+                                    temp = 0;
+                                    tempArr = [];
+                                    tempInner = [];
+                                    score -= 2;
+                                    document.getElementById('score').innerHTML = "得分："+score;
+                                    flag = true;
+                                },1002);
+                            },1000);
+                        }
+                    }
+                }
+            })(i)
+
+        }
+    }
+
+    function  resort() {
+        var arr = new Array();
+        var cards = document.getElementsByClassName('card');
+        for (var i = cards.length-1;i >= 0;i--) {
+            arr.push(cards[i]);
+        }
+        for (var i = cards.length-1;i >= 0;i--){
+            var k = Math.floor(Math.random()*(i));
+            console.log(k);
+            arr[i].style.top = (parseInt(k/5))*250 + 100 + 'px';
+            arr[k].style.top = (parseInt(i/5))*250 + 100 + 'px';
+            arr[i].style.left = (k%5)*230 + 200 + 'px';
+            arr[k].style.left = (i%5)*230 + 200 + 'px';
+            arr[i].style.transition = 'all 1s';
+            arr[k].style.transition = 'all 1s';
+            var temp = arr[i];
+            arr[i] = arr[k];
+            arr[k] = temp;
+        }
+        choose();
+    }
+    function f1() {
+        location.href = 'http://localhost:63342/zj00707/8.9/%E5%8D%A1%E7%89%8C%E9%85%8D%E5%AF%B9/%E7%BB%93%E6%9D%9F%E7%95%8C%E9%9D%A2.html?_ijt=i8hqqi6ilcibfhr8uf35fam5tu'
+    }
+</script>
+</body>
+</html>
